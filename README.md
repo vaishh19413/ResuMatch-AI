@@ -19,5 +19,8 @@ improvement suggestions.
 - Scikit-learn
 - pdfplumber
 
+ ## 🌐 Live Demo
+Try it here: resumatch-ai-5wtzcsu3q5junec4kh76k3.streamlit.app
+
 ## Built By
 Vaishnavi Khot — AI & Data Science Student
