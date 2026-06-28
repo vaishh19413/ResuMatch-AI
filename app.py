@@ -14,7 +14,27 @@ if st.button("🔍 Analyze"):
         job_words = set(job_description.lower().split())
         common = resume_words & job_words
         score = round(len(common)/len(job_words)*100, 2)
-        st.success(f"✅ Match Score: {score}%")
+
+        if score < 50:
+            st.error(f"⚠️ Low Match: {score}%")
+        elif score < 75:
+            st.warning(f"👍 Decent Match: {score}%")
+        else:
+            st.success(f"🌟 Great Match: {score}%")
+
         st.progress(int(min(score, 100)))
+
+        skills = ["python","sql","excel","tally","communication",
+                 "data","accounting","microsoft","software","ms-cit",
+                 "english","hindi","computer","programming","java"]
+        missing = [s for s in skills if s in job_description.lower()
+                  and s not in resume_text.lower()]
+
+        if missing:
+            st.markdown("### ❌ Missing Skills:")
+            for s in missing:
+                st.markdown(f"- ➕ Add **{s}** to your resume")
+        else:
+            st.success("✅ No major skills missing!")
     else:
         st.error("Please fill both fields!")
